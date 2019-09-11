@@ -7,5 +7,5 @@ import org.springframework.data.repository.CrudRepository;
 public interface CustomerRepo extends CrudRepository<Customer, Long>
 {
 	// JPA - search customer by name
-	// Customer findByCustname (String custname);
+	// Customer findCustomerByName(String name);
 }

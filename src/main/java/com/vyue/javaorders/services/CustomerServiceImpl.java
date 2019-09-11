@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,15 +26,40 @@ public class CustomerServiceImpl implements CustomerService
 	}
 
 	@Override
-	public Customer findCustomerByName(String name)
+	public Customer findCustomerByName(String name) throws EntityNotFoundException
 	{
 		return null;
 	}
 
+//	@Override
+//	public Customer findCustomerByName(String name) throws EntityNotFoundException
+//	{
+//		Customer cus = custrepos.findCustomerByName(name);
+//
+//		if (cus == null)
+//		{
+//			throw new EntityNotFoundException("Customer " + name + " not found!");
+//		} else
+//		{
+//			return cus;
+//		}
+//	}
+
 	@Override
+	@Transactional
 	public void delete(long id)
 	{
+		// see if id exists
+		// yes - delete
+		// no - warning
 
+		if (custrepos.findById(id).isPresent())
+		{
+			custrepos.deleteById(id);
+		} else
+		{
+			throw new EntityNotFoundException(Long.toString(id));
+		}
 	}
 
 	@Override
