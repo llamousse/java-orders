@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="agents")
+@Table(name = "agents")
 public class Agent
 {
 	// fields

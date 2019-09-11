@@ -19,15 +19,9 @@ public class CustomerServiceImpl implements CustomerService
 	@Override
 	public List<Customer> findAll()
 	{
-		List<Customer> myList = new ArrayList<>();
-		custrepos.findAll().iterator().forEachRemaining(myList::add);
-		return myList;
-	}
-
-	@Override
-	public Customer findCustomerById(long id)
-	{
-		return null;
+		List<Customer> list = new ArrayList<>();
+		custrepos.findAll().iterator().forEachRemaining(list::add);
+		return list;
 	}
 
 	@Override

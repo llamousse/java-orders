@@ -4,11 +4,10 @@ import com.vyue.javaorders.models.Customer;
 
 import java.util.List;
 
+// interface - functions for implementation
 public interface CustomerService
 {
 	List<Customer> findAll();
-
-	Customer findCustomerById(long id);
 
 	Customer findCustomerByName(String name);
 
