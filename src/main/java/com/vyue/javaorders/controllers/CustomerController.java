@@ -56,6 +56,19 @@ public class CustomerController
 		return new ResponseEntity<>(null, responseHeaders, HttpStatus.CREATED);
 	}
 
+	// PUT - updates the customer based off of custcode.
+	// does not have to do anything with Orders!
+	// localhost:2019/data/customers/update/{custcode}
+	@PutMapping(value = "/update/{custcode}",
+				produces = {"application/json"})
+	public ResponseEntity<?> updateCustomer(
+			@RequestBody Customer updateCustomer,
+			@PathVariable long custcode)
+	{
+		customerService.update(updateCustomer, custcode);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+
 	// DELETE - deletes the customer based off of custcode
 	// localhost:2019/data/customers/delete/{custcode}
 	@DeleteMapping("/delete/{custcode}")
