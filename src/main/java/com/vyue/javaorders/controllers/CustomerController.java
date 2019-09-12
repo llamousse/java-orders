@@ -32,13 +32,13 @@ public class CustomerController
 
 	// GET - returns all orders for a particular customer based on name
 	// localhost:2019/data/customers/name/{custname}
-	//	@GetMapping(value = "/name/{custname}",
-	//				produces = {"application/json"})
-	//	public ResponseEntity<?> getCustomerByName(@PathVariable String name)
-	//	{
-	//		Customer customer = customerService.findCustomerByName(name);
-	//		return new ResponseEntity<>(customer, HttpStatus.OK);
-	//	}
+	@GetMapping(value = "name/{custname}",
+				produces = {"application/json"})
+	public ResponseEntity<?> getCustomerByName(@PathVariable String custname)
+	{
+		Customer c = customerService.findCustomerByName(custname);
+		return new ResponseEntity<>(c, HttpStatus.OK);
+	}
 
 	// POST - adds a new customer including any new orders
 	// localhost:2019/data/customers/new

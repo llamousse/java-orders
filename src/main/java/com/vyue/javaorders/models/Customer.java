@@ -39,8 +39,13 @@ public class Customer
 	@OneToMany(mappedBy = "customer",
 			   cascade = CascadeType.ALL,
 			   orphanRemoval = true)
-	@JsonIgnoreProperties("customer")
+	@JsonIgnoreProperties("customers")
 	private List<Order> orders = new ArrayList<>();
+
+	// default constructor
+	public Customer()
+	{
+	}
 
 	// constructors
 	public Customer(String custname, String custcity, String workingarea, String custcountry, String grade, double openingamt, double receiveamt, double paymentamt, double outstandingamt, String phone, Agent agent)
@@ -56,11 +61,6 @@ public class Customer
 		this.outstandingamt = outstandingamt;
 		this.phone = phone;
 		this.agent = agent;
-	}
-
-	// default constructor
-	public Customer()
-	{
 	}
 
 	// getters and setters
