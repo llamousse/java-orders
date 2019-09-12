@@ -27,24 +27,18 @@ public class CustomerServiceImpl implements CustomerService
 	}
 
 	@Override
-	public Customer findCustomerByName(String name) throws EntityNotFoundException
+	public Customer findCustomerByName(String name)
 	{
-		return null;
-	}
+		Customer customer = custrepos.findByCustname(name);
 
-//	@Override
-//	public Customer findCustomerByName(String name)
-//	{
-//		Customer customer = custrepos.findByCustname(name);
-//
-//		if (customer == null)
-//		{
-//			throw new EntityNotFoundException("Customer " + name + " not found!");
-//		} else
-//		{
-//			return customer;
-//		}
-//	}
+		if (customer == null)
+		{
+			throw new EntityNotFoundException("Customer " + name + " not found!");
+		} else
+		{
+			return customer;
+		}
+	}
 
 	@Override
 	@Transactional
